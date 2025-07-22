@@ -37,7 +37,7 @@ To get started with the Symptom Checker Chatbot, follow these steps:
 3. Download the necessary data files and place them in the appropriate directories:
    - `intents.json`: Contains predefined intents for the chatbot.
    - `data_rnn.pth`: Pre-trained RNN model for natural language understanding.
-   - `medical_centers.json`: Data file containing information about medical centers.
+   - `tri_state_medical_centers.json`: Data file containing information about medical centers.
 
 ## Usage
 
