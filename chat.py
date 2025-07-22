@@ -87,58 +87,10 @@ def get_response(msg):
 
     return ["not_understand","I do not understand. Can you please rephrase the sentence?"]
 
-def centres():
-    # Function to calculate the Haversine distance between two points
-    def haversine(lat1, lon1, lat2, lon2):
-        # Radius of the Earth in kilometers
-        R = 6371.0
-
-        # Convert latitude and longitude from degrees to radians
-        lat1 = math.radians(lat1)
-        lon1 = math.radians(lon1)
-        lat2 = math.radians(lat2)
-        lon2 = math.radians(lon2)
-
-        # Haversine formula
-        dlon = lon2 - lon1
-        dlat = lat2 - lat1
-
-        a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
-        c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-
-        # Calculate the distance
-        distance = R * c
-        return distance
-
-    # Get your current location based on your IP address
-    location = geocoder.ip('me')
-
-    # Given location (latitude and longitude)
-    given_location = location.latlng  # Replace with your desired location
-
     # Load the JSON data
-    with open("medical_centers.json", "r") as json_file:
-        medical_centers = json.load(json_file)
+with open("tri_state_medical_centers.json", "r") as json_file:
+    tri_state_medical_centers = json.load(json_file)
 
-    # Calculate distances to all medical centers
-    distances_to_centers = []
-
-    for center in medical_centers["intents"]:
-        center_location = center["location"]
-        distance = haversine(given_location[0], given_location[1], center_location[0], center_location[1])
-        distances_to_centers.append((center["tag"], distance))
-
-    # Sort the list of distances in ascending order
-    distances_to_centers.sort(key=lambda x: x[1])
-
-    l = ["center"]
-
-
-    for i, (center_name, distance) in enumerate(distances_to_centers[:5], start=1):
-        for center in medical_centers["intents"]:
-            if center["tag"] == center_name:
-                l.append([center_name, (str(round(distance, 2))+'km'), center["Address"]])
-    return l
 
 
 if __name__ == "__main__":
