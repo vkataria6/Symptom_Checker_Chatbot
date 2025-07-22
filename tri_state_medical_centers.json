@@ -1,0 +1,1700 @@
+{
+  "intents": [
+    {
+      "tag": "AM/PM Urgent Care with Englewood Health at Jersey City",
+      "location": [
+        40.7334444,
+        -74.0633536
+      ],
+      "Address": "2 Journal Square Plaza, Jersey City"
+    },
+    {
+      "tag": "CityMD Park Slope Urgent Care - Brooklyn",
+      "location": [
+        40.6700813,
+        -73.9857471
+      ],
+      "Address": "420 5th Ave, Brooklyn"
+    },
+    {
+      "tag": "ModernMD Urgent Care - South Richmond Hill",
+      "location": [
+        40.6867218,
+        -73.8245925
+      ],
+      "Address": "103-42 Lefferts Blvd, Queens"
+    },
+    {
+      "tag": "CityMD Journal Square Urgent Care - New Jersey",
+      "location": [
+        40.7306692,
+        -74.0641188
+      ],
+      "Address": "32 Journal Square Plaza, Jersey City"
+    },
+    {
+      "tag": "Quality First Urgent Care",
+      "location": [
+        40.6167004,
+        -73.97880239999999
+      ],
+      "Address": "6010 Bay Pkwy #902, Brooklyn"
+    },
+    {
+      "tag": "Northwell Health-GoHealth Urgent Care",
+      "location": [
+        40.727965,
+        -73.855178
+      ],
+      "Address": "98-81 Queens Blvd, Forest Hills"
+    },
+    {
+      "tag": "CityMD Brooklyn Heights Urgent Care - Brooklyn",
+      "location": [
+        40.6949034,
+        -73.9938962
+      ],
+      "Address": "135 Montague St, Brooklyn"
+    },
+    {
+      "tag": "+MEDRITE Clinton Hill Urgent Care - Brooklyn",
+      "location": [
+        40.6933732,
+        -73.96483300000001
+      ],
+      "Address": "504 Myrtle Ave, Brooklyn"
+    },
+    {
+      "tag": "Nao Medical - Crown Heights Urgent Care",
+      "location": [
+        40.6709422,
+        -73.9573604
+      ],
+      "Address": "341 Eastern Pkwy, Brooklyn"
+    },
+    {
+      "tag": "Prompt-MD Urgent Care Center Of Hoboken",
+      "location": [
+        40.73806709999999,
+        -74.0351876
+      ],
+      "Address": "309 1st St, Hoboken"
+    },
+    {
+      "tag": "CityMD Ridgewood Urgent Care- Queens",
+      "location": [
+        40.7001393,
+        -73.9051978
+      ],
+      "Address": "56-26 Myrtle Ave, Ridgewood"
+    },
+    {
+      "tag": "Doc Care Q1- Primary Care, Urgent Care & Telemedicine",
+      "location": [
+        40.70734350000001,
+        -73.89712449999999
+      ],
+      "Address": "66-55 Fresh Pond Rd, Ridgewood"
+    },
+    {
+      "tag": "UMD Urgent Medical Care",
+      "location": [
+        40.7150964,
+        -73.9583375
+      ],
+      "Address": "633 Driggs Ave, Brooklyn"
+    },
+    {
+      "tag": "Centers Urgent Care of Flatbush",
+      "location": [
+        40.6257173,
+        -73.958123
+      ],
+      "Address": "1811 Avenue J, Brooklyn"
+    },
+    {
+      "tag": "CityMD Auburndale Urgent Care - Queens",
+      "location": [
+        40.7575684,
+        -73.79038570000002
+      ],
+      "Address": "191-20 Northern Blvd, Flushing"
+    },
+    {
+      "tag": "MyDoc Urgent Care Forest Hills and Kew Gardens",
+      "location": [
+        40.7155202,
+        -73.8332558
+      ],
+      "Address": "116-20 Queens Blvd, Forest Hills"
+    },
+    {
+      "tag": "All Med Urgent Care",
+      "location": [
+        40.6855813,
+        -73.82699459999999
+      ],
+      "Address": "115-20 Liberty Ave, South Richmond Hill"
+    },
+    {
+      "tag": "CityMD Bensonhurst 86th Street Urgent Care - Brooklyn",
+      "location": [
+        40.6022887,
+        -73.9940424
+      ],
+      "Address": "2175 86th St, Brooklyn"
+    },
+    {
+      "tag": "Centers Urgent Care of Middle Village",
+      "location": [
+        40.713865,
+        -73.90152499999999
+      ],
+      "Address": "6122g Fresh Pond Rd, Middle Village"
+    },
+    {
+      "tag": "+MEDRITE Yorkville Urgent Care - Manhattan",
+      "location": [
+        40.7774052,
+        -73.95187829999999
+      ],
+      "Address": "1646 2nd Ave, New York"
+    },
+    {
+      "tag": "+MEDRITE Upper West Side Urgent Care - Manhattan",
+      "location": [
+        40.7828041,
+        -73.98100219999999
+      ],
+      "Address": "2189 Broadway, New York"
+    },
+    {
+      "tag": "HealthNeed Medical Urgent Care",
+      "location": [
+        40.7599986,
+        -73.8293434
+      ],
+      "Address": "136-21 Roosevelt Ave, Flushing"
+    },
+    {
+      "tag": "Proxi Medical Urgent Care",
+      "location": [
+        40.6659422,
+        -73.9565952
+      ],
+      "Address": "1665 Bedford Ave Ste 2, Brooklyn"
+    },
+    {
+      "tag": "CityMD East 67th Urgent Care - NYC",
+      "location": [
+        40.7668084,
+        -73.9629922
+      ],
+      "Address": "1150 3rd Ave, New York"
+    },
+    {
+      "tag": "RJ Medical & Urgent Care",
+      "location": [
+        40.6336644,
+        -74.0218422
+      ],
+      "Address": "464 Bay Ridge Ave, Brooklyn"
+    },
+    {
+      "tag": "Centers Urgent Care of Astoria",
+      "location": [
+        40.7681652,
+        -73.9234676
+      ],
+      "Address": "27-15 30th Ave., Long Island City"
+    },
+    {
+      "tag": "Nao Medical - Jackson Heights Urgent Care",
+      "location": [
+        40.7551578,
+        -73.8868976
+      ],
+      "Address": "80-10 Northern Blvd, Jackson Heights"
+    },
+    {
+      "tag": "HealthNeed Medical Urgent Care",
+      "location": [
+        40.7554212,
+        -73.8252547
+      ],
+      "Address": "139-11 Franklin Ave, Flushing"
+    },
+    {
+      "tag": "CityMD East 37th Urgent Care - NYC",
+      "location": [
+        40.7476401,
+        -73.9765029
+      ],
+      "Address": "561 3rd Ave, New York"
+    },
+    {
+      "tag": "Prompt-MD Urgent Care Center Of Jersey City",
+      "location": [
+        40.7148665,
+        -74.0438453
+      ],
+      "Address": "201 Marin Blvd Ste. 3-B, Jersey City"
+    },
+    {
+      "tag": "AFC Urgent Care Lyndhurst",
+      "location": [
+        40.8133743,
+        -74.1199153
+      ],
+      "Address": "560 New York Ave, Lyndhurst"
+    },
+    {
+      "tag": "Englewood Health Urgent Care at Englewood",
+      "location": [
+        40.8957866,
+        -73.97520829999999
+      ],
+      "Address": "35 Nathaniel Pl, Englewood"
+    },
+    {
+      "tag": "+MEDRITE Garfield Urgent Care - New Jersey",
+      "location": [
+        40.8669538,
+        -74.0983389
+      ],
+      "Address": "210 Passaic St, Garfield"
+    },
+    {
+      "tag": "+MEDRITE Midtown East Urgent Care - Manhattan",
+      "location": [
+        40.7541816,
+        -73.96935309999999
+      ],
+      "Address": "919 2nd Ave, New York"
+    },
+    {
+      "tag": "MiDoctor - Walk-in Urgent Care & Primary Care - Upper East Side",
+      "location": [
+        40.7691043,
+        -73.9614248
+      ],
+      "Address": "1226 3rd Ave, New York"
+    },
+    {
+      "tag": "Essen Health Care: 5665-5667 Riverdale Avenue",
+      "location": [
+        40.90628890000001,
+        -73.90511699999999
+      ],
+      "Address": "5665 Riverdale Ave, Bronx"
+    },
+    {
+      "tag": "Nao Medical - Bronx 174th Urgent Care",
+      "location": [
+        40.8370336,
+        -73.8872758
+      ],
+      "Address": "932 E 174th St, Bronx"
+    },
+    {
+      "tag": "CityMD New Dorp Urgent Care - Staten Island",
+      "location": [
+        40.5659644,
+        -74.11381589999999
+      ],
+      "Address": "2710 Hylan Blvd, Staten Island"
+    },
+    {
+      "tag": "Nao Medical - Bronx Bartow Urgent Care",
+      "location": [
+        40.87017900000001,
+        -73.8282736
+      ],
+      "Address": "2063A Bartow Ave, Bronx"
+    },
+    {
+      "tag": "Urgent Care & Primary Care Bushwick Brooklyn - Urban Wellness Physicians",
+      "location": [
+        40.68999360000001,
+        -73.9225354
+      ],
+      "Address": "1349 Broadway, Brooklyn"
+    },
+    {
+      "tag": "ModernMD Urgent Care - Jackson Heights",
+      "location": [
+        40.7487213,
+        -73.8838633
+      ],
+      "Address": "37-33 82nd St, Queens"
+    },
+    {
+      "tag": "+MEDRITE Tribeca Urgent Care - Manhattan",
+      "location": [
+        40.7158865,
+        -74.00949969999999
+      ],
+      "Address": "139 Chambers St, New York"
+    },
+    {
+      "tag": "Centers Urgent Care of Forest Hills",
+      "location": [
+        40.7326875,
+        -73.8499775
+      ],
+      "Address": "64-02 108th St, Forest Hills"
+    },
+    {
+      "tag": "Rapid MD Urgent Care",
+      "location": [
+        40.6796082,
+        -73.7519458
+      ],
+      "Address": "217-14 Merrick Blvd, Queens"
+    },
+    {
+      "tag": "Urgent Care & Walk-in Medical Suite",
+      "location": [
+        40.7590988,
+        -74.2096612
+      ],
+      "Address": "200 Freeway Dr E STE 305, East Orange"
+    },
+    {
+      "tag": "AM/PM Urgent Care with Englewood Health at North Bergen",
+      "location": [
+        40.7988612,
+        -74.0092324
+      ],
+      "Address": "7405 Bergenline Ave, North Bergen"
+    },
+    {
+      "tag": "Essen Health Care: 8989 Union Turnpike",
+      "location": [
+        40.7072925,
+        -73.8552721
+      ],
+      "Address": "89-89 Union Tpke, Glendale"
+    },
+    {
+      "tag": "CityMD Midwood Urgent Care - Brooklyn",
+      "location": [
+        40.6083489,
+        -73.95984829999999
+      ],
+      "Address": "1305 Kings Hwy, Brooklyn"
+    },
+    {
+      "tag": "AFC Urgent Care North Bergen",
+      "location": [
+        40.8123321,
+        -74.0142834
+      ],
+      "Address": "2100 88th St Bldg G,1a, North Bergen"
+    },
+    {
+      "tag": "CityMD Clifton Broad Street Urgent Care - New Jersey",
+      "location": [
+        40.8531203,
+        -74.1784673
+      ],
+      "Address": "1255 Broad St, Clifton"
+    },
+    {
+      "tag": "Chai Urgent Care - Staten Island",
+      "location": [
+        40.5818502,
+        -74.0981738
+      ],
+      "Address": "1975 Hylan Blvd, Staten Island"
+    },
+    {
+      "tag": "HealthNeed Medical Urgent Care",
+      "location": [
+        40.744508,
+        -73.95462599999999
+      ],
+      "Address": "5-33 48th Ave, Long Island City"
+    },
+    {
+      "tag": "CityMD Brighton Beach Urgent Care - Brooklyn",
+      "location": [
+        40.577595,
+        -73.9602714
+      ],
+      "Address": "704 Brighton Beach Ave, Brooklyn"
+    },
+    {
+      "tag": "HealthNeed Medical Urgent Care Lower East Side NYC",
+      "location": [
+        40.7164977,
+        -73.9876453
+      ],
+      "Address": "384 Grand St Front # 3, New York"
+    },
+    {
+      "tag": "Prompt-MD Urgent Care Center Of Fort Lee",
+      "location": [
+        40.8525467,
+        -73.9686067
+      ],
+      "Address": "2059 Hudson St, Fort Lee"
+    },
+    {
+      "tag": "Summit Health Urgent Care (Westmed) - New Rochelle, NY",
+      "location": [
+        40.9135015,
+        -73.7811574
+      ],
+      "Address": "171 Huguenot St, New Rochelle"
+    },
+    {
+      "tag": "ModernMD Urgent Care - City Line",
+      "location": [
+        40.6790148,
+        -73.8661467
+      ],
+      "Address": "1169 Liberty Ave, Brooklyn"
+    },
+    {
+      "tag": "Urgent Care Bronx East Montefiore Medical Group",
+      "location": [
+        40.8350049,
+        -73.84793839999999
+      ],
+      "Address": "2300 Westchester Ave, Bronx"
+    },
+    {
+      "tag": "CityMD Yonkers-South Broadway Urgent Care - Westchester",
+      "location": [
+        40.9187077,
+        -73.8963062
+      ],
+      "Address": "424 S Broadway, Yonkers"
+    },
+    {
+      "tag": "CityMD Woodhaven Urgent Care- Queens",
+      "location": [
+        40.69328600000001,
+        -73.8535067
+      ],
+      "Address": "91-07 Jamaica Ave, Woodhaven"
+    },
+    {
+      "tag": "Atlantic Health Urgent Care at Watchung",
+      "location": [
+        40.6418158,
+        -74.416039
+      ],
+      "Address": "1569 US-22, Watchung"
+    },
+    {
+      "tag": "Care Station Medical Group",
+      "location": [
+        40.7922331,
+        -74.2538941
+      ],
+      "Address": "456 Prospect Ave, West Orange"
+    },
+    {
+      "tag": "CityMD Fulton Urgent Care - NYC",
+      "location": [
+        40.7103936,
+        -74.0082712
+      ],
+      "Address": "138 Fulton St, New York"
+    },
+    {
+      "tag": "CityMD Livingston at Summit Health Hub - New Jersey",
+      "location": [
+        40.77388,
+        -74.3204116
+      ],
+      "Address": "75 E Northfield Rd, Livingston"
+    },
+    {
+      "tag": "CityMD Berkeley Heights at Summit Health Hub - New Jersey",
+      "location": [
+        40.6772133,
+        -74.41177619999999
+      ],
+      "Address": "1 Diamond Hill Rd, Berkeley Heights"
+    },
+    {
+      "tag": "CityMD Westfield at Summit Health Hub - New Jersey",
+      "location": [
+        40.6802424,
+        -74.3308899
+      ],
+      "Address": "574 Springfield Ave, Westfield"
+    },
+    {
+      "tag": "Care Station Medical Group Linden",
+      "location": [
+        40.633407,
+        -74.26852199999999
+      ],
+      "Address": "328 W St Georges Ave, Linden"
+    },
+    {
+      "tag": "Atlantic Health Urgent Care at Edison",
+      "location": [
+        40.5072965,
+        -74.39454769999999
+      ],
+      "Address": "561 U.S. Rte 1, Edison"
+    },
+    {
+      "tag": "Centers Urgent Care of Boro Park",
+      "location": [
+        40.6376423,
+        -73.9991407
+      ],
+      "Address": "5022 Fort Hamilton Pkwy, Brooklyn"
+    },
+    {
+      "tag": "AFC Urgent Care New Providence",
+      "location": [
+        40.70606859999999,
+        -74.4057299
+      ],
+      "Address": "1286 Springfield Ave, New Providence"
+    },
+    {
+      "tag": "Atlantic Health Urgent Care at Linden",
+      "location": [
+        40.6321386,
+        -74.2687843
+      ],
+      "Address": "415 W St Georges Ave, Linden"
+    },
+    {
+      "tag": "CityMD NoHo Urgent Care - NYC",
+      "location": [
+        40.7269027,
+        -73.9953525
+      ],
+      "Address": "654 Broadway, New York"
+    },
+    {
+      "tag": "Care Station Medical Group Springfield",
+      "location": [
+        40.6881164,
+        -74.315818
+      ],
+      "Address": "not applicable, 90 US-22, Springfield"
+    },
+    {
+      "tag": "Atlantic Health Urgent Care at Springfield",
+      "location": [
+        40.6858747,
+        -74.3196622
+      ],
+      "Address": "200 US-22, Springfield"
+    },
+    {
+      "tag": "Atlantic AdvancED Urgent Care",
+      "location": [
+        40.6312034,
+        -74.3103849
+      ],
+      "Address": "140 Central Ave, Clark"
+    },
+    {
+      "tag": "Atlantic Health Urgent Care at Bloomfield",
+      "location": [
+        40.7786279,
+        -74.1880551
+      ],
+      "Address": "135 Bloomfield Ave, Bloomfield"
+    },
+    {
+      "tag": "MD Care Urgent Care Center",
+      "location": [
+        40.6656731,
+        -74.2361701
+      ],
+      "Address": "637 Westfield Ave 1st Floor, Elizabeth"
+    },
+    {
+      "tag": "Scotch Plains Medical Center/Urgent Care",
+      "location": [
+        40.6485165,
+        -74.39715029999999
+      ],
+      "Address": "1814 E 2nd St, Scotch Plains"
+    },
+    {
+      "tag": "Urgent Care of New Jersey",
+      "location": [
+        40.52608499999999,
+        -74.386668
+      ],
+      "Address": "2090 NJ-27, Edison"
+    },
+    {
+      "tag": "NJUCare Urgent Care",
+      "location": [
+        40.66296120000001,
+        -74.2640119
+      ],
+      "Address": "141 Chestnut St, Roselle Park"
+    },
+    {
+      "tag": "Atlantic Health Urgent Care at Cedar Knolls",
+      "location": [
+        40.808896,
+        -74.4642717
+      ],
+      "Address": "118 E Hanover Ave, Cedar Knolls"
+    },
+    {
+      "tag": "Cooperman Barnabas Medical Center",
+      "location": [
+        40.7629282,
+        -74.3037812
+      ],
+      "Address": "94 Old Short Hills Rd, Livingston"
+    },
+    {
+      "tag": "Excel Urgent Care of Iselin, NJ",
+      "location": [
+        40.5617695,
+        -74.3001795
+      ],
+      "Address": "740 U.S. Rte 1 North, Iselin"
+    },
+    {
+      "tag": "CityMD Forest Avenue Urgent Care - Staten Island",
+      "location": [
+        40.6287668,
+        -74.1164349
+      ],
+      "Address": "812 Forest Ave, Staten Island"
+    },
+    {
+      "tag": "RWJBarnabas Health at Union City",
+      "location": [
+        40.7749016,
+        -74.03205299999999
+      ],
+      "Address": "3196 John F. Kennedy Blvd, Union City"
+    },
+    {
+      "tag": "Hackensack Meridian Mountainside Medical Center",
+      "location": [
+        40.8117536,
+        -74.20370299999999
+      ],
+      "Address": "1 Bay Ave, Montclair"
+    },
+    {
+      "tag": "CityMD Amboy Road Urgent Care - Staten Island",
+      "location": [
+        40.5267144,
+        -74.2008963
+      ],
+      "Address": "5788-5800 Amboy Rd, Staten Island"
+    },
+    {
+      "tag": "CityMD Hoboken Urgent Care - New Jersey",
+      "location": [
+        40.7396415,
+        -74.0298875
+      ],
+      "Address": "231 Washington St, Hoboken"
+    },
+    {
+      "tag": "Hackensack Meridian Urgent Care - Piscataway",
+      "location": [
+        40.5479621,
+        -74.4294341
+      ],
+      "Address": "1080 Stelton Rd, Piscataway"
+    },
+    {
+      "tag": "CityMD Cobble Hill Urgent Care - Brooklyn",
+      "location": [
+        40.686265,
+        -73.9941856
+      ],
+      "Address": "228-230 Court St, Brooklyn"
+    },
+    {
+      "tag": "LevelUp MD Bloomfield Urgent Care",
+      "location": [
+        40.7932438,
+        -74.19827169999999
+      ],
+      "Address": "322 Glenwood Ave, Bloomfield"
+    },
+    {
+      "tag": "Clara Maass Medical Center",
+      "location": [
+        40.78571729999999,
+        -74.1755244
+      ],
+      "Address": "1 Clara Maass Dr, Belleville"
+    },
+    {
+      "tag": "Chai Urgent Care Jersey City, NJ",
+      "location": [
+        40.7199598,
+        -74.0824545
+      ],
+      "Address": "555 West Side Ave, Jersey City"
+    },
+    {
+      "tag": "CityMD Clark Urgent Care - New Jersey",
+      "location": [
+        40.63113790000001,
+        -74.3070702
+      ],
+      "Address": "1255 Raritan Rd, Clark"
+    },
+    {
+      "tag": "CityMD Financial District Urgent Care - NYC",
+      "location": [
+        40.7064941,
+        -74.01126649999999
+      ],
+      "Address": "24 Broad St, New York"
+    },
+    {
+      "tag": "+MEDRITE Roselle Urgent Care - New Jersey",
+      "location": [
+        40.644745,
+        -74.2735059
+      ],
+      "Address": "580 Raritan Rd, Roselle"
+    },
+    {
+      "tag": "Atlantic Health Urgent Care at South Plainfield",
+      "location": [
+        40.5932058,
+        -74.3987454
+      ],
+      "Address": "2301 Park Ave, South Plainfield"
+    },
+    {
+      "tag": "Northwell Health-GoHealth Urgent Care",
+      "location": [
+        40.5454454,
+        -74.15935449999999
+      ],
+      "Address": "4316 Amboy Rd, Staten Island"
+    },
+    {
+      "tag": "CityMD West Village Urgent Care - NYC",
+      "location": [
+        40.7313976,
+        -74.0014064
+      ],
+      "Address": "331 6th Ave, New York"
+    },
+    {
+      "tag": "CityMD Sunset Park Urgent Care - Brooklyn",
+      "location": [
+        40.644786,
+        -74.0110768
+      ],
+      "Address": "5024 5th Ave, Brooklyn"
+    },
+    {
+      "tag": "CityMD Bayonne Urgent Care - New Jersey",
+      "location": [
+        40.6607581,
+        -74.10846049999999
+      ],
+      "Address": "904 Bayonne Crossing Way, Bayonne"
+    },
+    {
+      "tag": "Northwell Health-GoHealth Urgent Care",
+      "location": [
+        40.6112069,
+        -74.1564755
+      ],
+      "Address": "1445 Richmond Ave Ste E, Staten Island"
+    },
+    {
+      "tag": "Newark Beth Israel Medical Center",
+      "location": [
+        40.7100478,
+        -74.2125181
+      ],
+      "Address": "201 Lyons Ave, Newark"
+    },
+    {
+      "tag": "CityMD West 33rd Urgent Care - NYC",
+      "location": [
+        40.7518917,
+        -73.9939998
+      ],
+      "Address": "5 Pennsylvania Plaza, New York"
+    },
+    {
+      "tag": "Saint Michael's Medical Center",
+      "location": [
+        40.7439709,
+        -74.17464939999999
+      ],
+      "Address": "111 Central Ave, Newark"
+    },
+    {
+      "tag": "CityMD Short Hills Urgent Care - New Jersey",
+      "location": [
+        40.7217877,
+        -74.33464409999999
+      ],
+      "Address": "800 Morris Tpke, Short Hills"
+    },
+    {
+      "tag": "Northwell Health-GoHealth Urgent Care",
+      "location": [
+        40.5574473,
+        -74.1394689
+      ],
+      "Address": "125 Greaves Ln, Staten Island"
+    },
+    {
+      "tag": "Circle Urgent Care of Eltingville",
+      "location": [
+        40.5429839,
+        -74.1642505
+      ],
+      "Address": "3894 Richmond Ave, Staten Island"
+    },
+    {
+      "tag": "Union County Health Care Associates",
+      "location": [
+        40.6534032,
+        -74.31074079999999
+      ],
+      "Address": "49 S Ave W First Floor, Cranford"
+    },
+    {
+      "tag": "Atlantic Health Urgent Care at East Brunswick",
+      "location": [
+        40.4471019,
+        -74.3955235
+      ],
+      "Address": "418 NJ-18, East Brunswick"
+    },
+    {
+      "tag": "Immediate Care Medical Walk-In of Marlboro",
+      "location": [
+        40.3334534,
+        -74.2419136
+      ],
+      "Address": "479 County Rte 520 Suite A103, Marlboro Township"
+    },
+    {
+      "tag": "Family Care PA",
+      "location": [
+        40.5941579,
+        -74.49218979999999
+      ],
+      "Address": "257 US-22, Green Brook Township"
+    },
+    {
+      "tag": "Doctors Medi Center",
+      "location": [
+        40.5904238,
+        -74.22965350000001
+      ],
+      "Address": "835 Roosevelt Ave, Carteret"
+    },
+    {
+      "tag": "Excel Urgent Care of Old Bridge, NJ",
+      "location": [
+        40.4040669,
+        -74.3219629
+      ],
+      "Address": "2624 County Rd 516, Old Bridge"
+    },
+    {
+      "tag": "NJ Primary Care Clinic",
+      "location": [
+        40.57678900000001,
+        -74.385727
+      ],
+      "Address": "2177 Oak Tree Rd #206, Edison"
+    },
+    {
+      "tag": "Circle Urgent Care of Tottenville",
+      "location": [
+        40.5163194,
+        -74.2343482
+      ],
+      "Address": "7001 Amboy Rd, Staten Island"
+    },
+    {
+      "tag": "Carbon Health Urgent Care Marlboro - Englishtown",
+      "location": [
+        40.3478663,
+        -74.3090991
+      ],
+      "Address": "167 US-9 #5, Englishtown"
+    },
+    {
+      "tag": "AFC Urgent Care Bound Brook",
+      "location": [
+        40.5683509,
+        -74.552813
+      ],
+      "Address": "601 W Union Ave, Bound Brook"
+    },
+    {
+      "tag": "Brunswick Urgent Care",
+      "location": [
+        40.4344736,
+        -74.5453825
+      ],
+      "Address": "3185 NJ-27, Franklin Park"
+    },
+    {
+      "tag": "Family Care",
+      "location": [
+        40.5228541,
+        -74.6290223
+      ],
+      "Address": "256 US-206, Hillsborough Township"
+    },
+    {
+      "tag": "Avenel-Iselin Medical Group",
+      "location": [
+        40.5599888,
+        -74.3130707
+      ],
+      "Address": "400 Gill Ln, Iselin"
+    },
+    {
+      "tag": "Princeton Medical Center",
+      "location": [
+        40.34033429999999,
+        -74.62379460000001
+      ],
+      "Address": "1 Plainsboro Rd, Plainsboro Township"
+    },
+    {
+      "tag": "AFC Urgent Care Old Bridge, NJ",
+      "location": [
+        40.4495988,
+        -74.3011637
+      ],
+      "Address": "1120 US-9, Old Bridge"
+    },
+    {
+      "tag": "University Urgi Care",
+      "location": [
+        40.4671266,
+        -74.4990196
+      ],
+      "Address": "1553 NJ-27 # 2100, Somerset"
+    },
+    {
+      "tag": "LTACH CareOne at Trinitas Regional Medical Center",
+      "location": [
+        40.6590412,
+        -74.2145178
+      ],
+      "Address": "225 Williamson St, Elizabeth"
+    },
+    {
+      "tag": "VCare Urgent & Primary Care",
+      "location": [
+        40.3810764,
+        -74.5185884
+      ],
+      "Address": "485 Georges Rd, Dayton"
+    },
+    {
+      "tag": "Live Urgent Care",
+      "location": [
+        40.5294724,
+        -74.5214072
+      ],
+      "Address": "147 Pierce St, Somerset"
+    },
+    {
+      "tag": "Hackensack Meridian Urgent Care - Clark",
+      "location": [
+        40.6303126,
+        -74.3117295
+      ],
+      "Address": "1180 Raritan Rd, Clark"
+    },
+    {
+      "tag": "NJ 365 Urgent Care",
+      "location": [
+        40.4317748,
+        -74.5496489
+      ],
+      "Address": "3250 NJ-27 Suite 102, Kendall Park"
+    },
+    {
+      "tag": "Raritan Bay Medical Center-Old Bridge",
+      "location": [
+        40.3831163,
+        -74.32375379999999
+      ],
+      "Address": "Ferry Rd, Old Bridge"
+    },
+    {
+      "tag": "Live Urgent Care",
+      "location": [
+        40.4066589,
+        -74.3860146
+      ],
+      "Address": "85 Old Stage Rd, Spotswood"
+    },
+    {
+      "tag": "CityMD East Brunswick Urgent Care",
+      "location": [
+        40.4304322,
+        -74.38570159999999
+      ],
+      "Address": "683 NJ-18, East Brunswick"
+    },
+    {
+      "tag": "CityMD Watchung Urgent Care- New Jersey",
+      "location": [
+        40.6442973,
+        -74.4093063
+      ],
+      "Address": "1640 US-22, Watchung"
+    },
+    {
+      "tag": "AZZ Medical Associates - Primary Care - Old Bridge",
+      "location": [
+        40.4341631,
+        -74.3011124
+      ],
+      "Address": "200 Perrine Rd, Old Bridge"
+    },
+    {
+      "tag": "Prime Care Medical Group",
+      "location": [
+        40.5425034,
+        -74.36404569999999
+      ],
+      "Address": "561 Middlesex Ave, Metuchen"
+    },
+    {
+      "tag": "Hunterdon Urgent Care",
+      "location": [
+        40.5680337,
+        -74.6258611
+      ],
+      "Address": "45 US-206 Ste F, Raritan"
+    },
+    {
+      "tag": "Trinitas Regional Medical Center",
+      "location": [
+        40.6587244,
+        -74.2147773
+      ],
+      "Address": "225 Williamson St, Elizabeth"
+    },
+    {
+      "tag": "Carbon Health Urgent Care Somerset - Franklin",
+      "location": [
+        40.4751286,
+        -74.4898453
+      ],
+      "Address": "84 Veronica Ave, Somerset"
+    },
+    {
+      "tag": "Carbon Health Urgent Care Montgomery - Skillman",
+      "location": [
+        40.4057365,
+        -74.6477165
+      ],
+      "Address": "1325 US-206, Skillman"
+    },
+    {
+      "tag": "Carbon Health Urgent Care Green Brook",
+      "location": [
+        40.6040448,
+        -74.4733461
+      ],
+      "Address": "119 US-22, Green Brook Township"
+    },
+    {
+      "tag": "Advocare Caring Doctors Medical Center PC",
+      "location": [
+        40.5349548,
+        -74.3774686
+      ],
+      "Address": "240 Bridge St Building F, Metuchen"
+    },
+    {
+      "tag": "Atlantic Health Urgent Care at Warren",
+      "location": [
+        40.6171606,
+        -74.49419569999999
+      ],
+      "Address": "64 Mountain Blvd, Warren"
+    },
+    {
+      "tag": "Kinder Pediatric Urgent Care Metuchen New Jersey Walk in clinic doctors",
+      "location": [
+        40.5482544,
+        -74.3262946
+      ],
+      "Address": "65 U.S. Rte 1 South, Metuchen"
+    },
+    {
+      "tag": "Northwell Health-GoHealth Urgent Care",
+      "location": [
+        40.526613,
+        -74.23141369999999
+      ],
+      "Address": "2935 Veterans Rd W Suite H, Staten Island"
+    },
+    {
+      "tag": "CityMD Raritan Urgent Care - New Jersey",
+      "location": [
+        40.5738247,
+        -74.63653500000001
+      ],
+      "Address": "503 US-202, Raritan"
+    },
+    {
+      "tag": "AFC Urgent Care US Route 1-9",
+      "location": [
+        40.6633083,
+        -74.2056211
+      ],
+      "Address": "111-117 Spring St, Elizabeth"
+    },
+    {
+      "tag": "NJ Doctors Urgent Care",
+      "location": [
+        40.4615101,
+        -74.29523069999999
+      ],
+      "Address": "963 US-9, South Amboy"
+    },
+    {
+      "tag": "Urgent Care Pediatric Urgent Woodbridge Township",
+      "location": [
+        40.516889,
+        -74.28687819999999
+      ],
+      "Address": "365 Convery Blvd ste 17, Perth Amboy"
+    },
+    {
+      "tag": "AFC Urgent Care South Plainfield",
+      "location": [
+        40.57870399999999,
+        -74.388721
+      ],
+      "Address": "907 Oak Tree Ave, South Plainfield"
+    },
+    {
+      "tag": "AFC Urgent Care Milltown, East Brunswick",
+      "location": [
+        40.4428125,
+        -74.4244416
+      ],
+      "Address": "352 Ryders Ln, East Brunswick"
+    },
+    {
+      "tag": "Atlantic Medical Group Primary Care at Warren",
+      "location": [
+        40.6172595,
+        -74.4944385
+      ],
+      "Address": "64 Mountain Blvd, Warren"
+    },
+    {
+      "tag": "Medemerge",
+      "location": [
+        40.6018636,
+        -74.47457589999999
+      ],
+      "Address": "1005 Washington Ave, Green Brook Township"
+    },
+    {
+      "tag": "Optum Heights Primary Care",
+      "location": [
+        39.8804759,
+        -75.05461489999999
+      ],
+      "Address": "318 White Horse Pike, Haddon Heights"
+    },
+    {
+      "tag": "myDoc Urgent Care",
+      "location": [
+        39.97618,
+        -75.1571039
+      ],
+      "Address": "1501 N Broad St #10, Philadelphia"
+    },
+    {
+      "tag": "AFC Urgent Care Willow Grove",
+      "location": [
+        40.14751529999999,
+        -75.1281687
+      ],
+      "Address": "2848 W Moreland Rd, Willow Grove"
+    },
+    {
+      "tag": "Main Line Health Urgent Care - Wynnewood",
+      "location": [
+        40.002522,
+        -75.28063399999999
+      ],
+      "Address": "Main Line HealthCare in Wynnewood, 306 E Lancaster Ave #200, Wynnewood"
+    },
+    {
+      "tag": "Inspira Urgent Care Laurel Springs",
+      "location": [
+        39.8202921,
+        -75.04016899999999
+      ],
+      "Address": "1238 Chews Landing Rd Ste C, Clementon"
+    },
+    {
+      "tag": "Lankenau Medical Center",
+      "location": [
+        39.988366,
+        -75.26217480000001
+      ],
+      "Address": "100 E Lancaster Ave, Wynnewood"
+    },
+    {
+      "tag": "Live Urgent Care",
+      "location": [
+        40.0936914,
+        -75.36828369999999
+      ],
+      "Address": "107 Town Center Rd, King of Prussia"
+    },
+    {
+      "tag": "Penn Presbyterian Medical Center",
+      "location": [
+        39.9581874,
+        -75.1995599
+      ],
+      "Address": "51 N 39th St, Philadelphia"
+    },
+    {
+      "tag": "Roxborough Urgent Care | Philadelphia",
+      "location": [
+        40.0633057,
+        -75.2379371
+      ],
+      "Address": "701 Cathedral Rd Suit 11, Philadelphia"
+    },
+    {
+      "tag": "Mercy Fitzgerald Hospital",
+      "location": [
+        39.9270406,
+        -75.2687838
+      ],
+      "Address": "1500 Lansdowne Ave, Darby"
+    },
+    {
+      "tag": "vybe urgent care",
+      "location": [
+        39.99083,
+        -75.10240999999999
+      ],
+      "Address": "3356 Aramingo Ave, Philadelphia"
+    },
+    {
+      "tag": "AFC Urgent Care Cinnaminson",
+      "location": [
+        40.00040360000001,
+        -74.98556409999999
+      ],
+      "Address": "1210 US-130 #1438, Cinnaminson"
+    },
+    {
+      "tag": "Optum Urgent Care - Mount Ephraim",
+      "location": [
+        39.88119289999999,
+        -75.0854543
+      ],
+      "Address": "2 S Black Horse Pike, Mt Ephraim"
+    },
+    {
+      "tag": "Patient First Primary and Urgent Care - Abington",
+      "location": [
+        40.108667,
+        -75.12355099999999
+      ],
+      "Address": "938 Old York Rd, Abington"
+    },
+    {
+      "tag": "AFC Urgent Care Deptford",
+      "location": [
+        39.8281363,
+        -75.1258509
+      ],
+      "Address": "1410 Delsea Dr, Deptford"
+    },
+    {
+      "tag": "AFC Urgent Care Southampton",
+      "location": [
+        40.169977,
+        -75.04446539999999
+      ],
+      "Address": "511 Second Street Pike, Southampton"
+    },
+    {
+      "tag": "Patient First Primary and Urgent Care - Feasterville",
+      "location": [
+        40.1489766,
+        -75.0004798
+      ],
+      "Address": "75 E Street Rd, Feasterville-Trevose"
+    },
+    {
+      "tag": "Virtua Urgent Care - Westmont",
+      "location": [
+        39.9019406,
+        -75.0628875
+      ],
+      "Address": "602 W Cuthbert Blvd 26 A, Haddon Township"
+    },
+    {
+      "tag": "AFC Urgent Care Woodbury",
+      "location": [
+        39.8196587,
+        -75.16310299999999
+      ],
+      "Address": "875 Mantua Pike, Woodbury"
+    },
+    {
+      "tag": "myDoc Urgent Care",
+      "location": [
+        39.9482372,
+        -75.1657678
+      ],
+      "Address": "1420 Locust St, Philadelphia"
+    },
+    {
+      "tag": "Carbon Health Urgent Care Marlton Crossing",
+      "location": [
+        39.8870605,
+        -74.9237179
+      ],
+      "Address": "295 NJ-73, Marlton"
+    },
+    {
+      "tag": "Main Line Health Urgent Care - Broomall",
+      "location": [
+        39.9621559,
+        -75.3562962
+      ],
+      "Address": "Main Line Health, Lower Level, 1991 Sproul Rd Suite 130, Broomall"
+    },
+    {
+      "tag": "AFC Urgent Care South Philly",
+      "location": [
+        39.9250088,
+        -75.1710519
+      ],
+      "Address": "1444 W Passyunk Ave, Philadelphia"
+    },
+    {
+      "tag": "AFC Urgent Care Northern Liberties",
+      "location": [
+        39.96911619999999,
+        -75.1392745
+      ],
+      "Address": "180 W Girard Ave, Philadelphia"
+    },
+    {
+      "tag": "Oaks Integrated Care - Mental Health Urgent Care",
+      "location": [
+        39.9134505,
+        -74.9649249
+      ],
+      "Address": "2051 Springdale Rd, Cherry Hill Township"
+    },
+    {
+      "tag": "Main Line Health Broomall",
+      "location": [
+        39.9620188,
+        -75.35573289999999
+      ],
+      "Address": "1991 Sproul Rd, Broomall"
+    },
+    {
+      "tag": "vybe urgent care",
+      "location": [
+        39.8846094,
+        -75.3306649
+      ],
+      "Address": "213 Morton Ave, Folsom"
+    },
+    {
+      "tag": "CityLife Health - Frankford",
+      "location": [
+        40.0207759,
+        -75.0803695
+      ],
+      "Address": "5000 Frankford Ave Suite D, Philadelphia"
+    },
+    {
+      "tag": "CityLife Health",
+      "location": [
+        39.993068,
+        -75.1485715
+      ],
+      "Address": "1010 W Lehigh Ave, Philadelphia"
+    },
+    {
+      "tag": "Holy Redeemer Hospital",
+      "location": [
+        40.109621,
+        -75.0824198
+      ],
+      "Address": "1648 Huntingdon Pike, Meadowbrook"
+    },
+    {
+      "tag": "Jefferson Health – Roosevelt Boulevard",
+      "location": [
+        40.08082659999999,
+        -75.0268883
+      ],
+      "Address": "9501 Roosevelt Blvd, Philadelphia"
+    },
+    {
+      "tag": "Jefferson Grant Avenue Urgent Care",
+      "location": [
+        40.0804127,
+        -75.0263453
+      ],
+      "Address": "2451 Grant Ave, Philadelphia"
+    },
+    {
+      "tag": "Virtua Urgent Care - Voorhees",
+      "location": [
+        39.8377635,
+        -74.9246678
+      ],
+      "Address": "158 NJ-73 B, Voorhees Township"
+    },
+    {
+      "tag": "Patient First Primary and Urgent Care - East Norriton",
+      "location": [
+        40.1377428,
+        -75.3074668
+      ],
+      "Address": "400 E Germantown Pike, East Norriton Township"
+    },
+    {
+      "tag": "vybe urgent care",
+      "location": [
+        39.9625592,
+        -75.16405879999999
+      ],
+      "Address": "1500 Spring Garden St Ste R105, Philadelphia"
+    },
+    {
+      "tag": "Virtua Urgent Care - Cherry Hill",
+      "location": [
+        39.9124374,
+        -75.0047659
+      ],
+      "Address": "315 NJ-70 A, Cherry Hill Township"
+    },
+    {
+      "tag": "Patient First Primary and Urgent Care - Woodbury",
+      "location": [
+        39.8266107,
+        -75.159171
+      ],
+      "Address": "630 Mantua Pike, Woodbury"
+    },
+    {
+      "tag": "AFC Urgent Care Conshohocken",
+      "location": [
+        40.0931117,
+        -75.2837593
+      ],
+      "Address": "48A E Ridge Pike, Conshohocken"
+    },
+    {
+      "tag": "Live Urgent Care",
+      "location": [
+        40.1588915,
+        -75.1478073
+      ],
+      "Address": "2019 Welsh Rd, Dresher"
+    },
+    {
+      "tag": "Live Urgent Care",
+      "location": [
+        39.8696565,
+        -75.0945711
+      ],
+      "Address": "363 W Browning Rd, Bellmawr"
+    },
+    {
+      "tag": "Virtua Urgent Care - Moorestown",
+      "location": [
+        39.97096519999999,
+        -74.9152506
+      ],
+      "Address": "401 Young Ave #180, Moorestown"
+    },
+    {
+      "tag": "AFC Urgent Care Ridley",
+      "location": [
+        39.89989449999999,
+        -75.3045994
+      ],
+      "Address": "2623 E Macdade Blvd, Holmes"
+    },
+    {
+      "tag": "Patient First Primary and Urgent Care - Voorhees",
+      "location": [
+        39.8533686,
+        -74.9811191
+      ],
+      "Address": "705 Haddonfield-Berlin Rd, Voorhees Township"
+    },
+    {
+      "tag": "Medex Urgent Care",
+      "location": [
+        40.1341399,
+        -75.0103267
+      ],
+      "Address": "15200 Bustleton Ave UNIT 4, Philadelphia"
+    },
+    {
+      "tag": "AFC Urgent Care Roxborough",
+      "location": [
+        40.0270471,
+        -75.20988059999999
+      ],
+      "Address": "5708 Ridge Ave Unit B, Philadelphia"
+    },
+    {
+      "tag": "vybe urgent care",
+      "location": [
+        40.0497541,
+        -75.0588466
+      ],
+      "Address": "7390 Bustleton Ave, Philadelphia"
+    },
+    {
+      "tag": "Jefferson Einstein Montgomery Hospital",
+      "location": [
+        40.1530897,
+        -75.3439164
+      ],
+      "Address": "559 W Germantown Pike, Norristown"
+    },
+    {
+      "tag": "AFC Urgent Care Cheltenham",
+      "location": [
+        40.07405079999999,
+        -75.15545639999999
+      ],
+      "Address": "2401 W Cheltenham Ave, Wyncote"
+    },
+    {
+      "tag": "Patient First Primary and Urgent Care - Springfield",
+      "location": [
+        39.9209563,
+        -75.32159
+      ],
+      "Address": "417 Baltimore Pike, Springfield"
+    },
+    {
+      "tag": "Urgent Care at Northeast Philadelphia",
+      "location": [
+        40.0430095,
+        -75.05232029999999
+      ],
+      "Address": "2900 Cottman Ave, Philadelphia"
+    },
+    {
+      "tag": "vybe urgent care",
+      "location": [
+        39.955837,
+        -75.1940257
+      ],
+      "Address": "3550 Market St Ste 102, Philadelphia"
+    },
+    {
+      "tag": "vybe urgent care",
+      "location": [
+        40.0328594,
+        -75.21488610000002
+      ],
+      "Address": "6060 Ridge Ave #100, Philadelphia"
+    },
+    {
+      "tag": "Patient First Primary and Urgent Care - Cherry Hill",
+      "location": [
+        39.9213492,
+        -75.04010459999999
+      ],
+      "Address": "2171 NJ-70, Cherry Hill Township"
+    },
+    {
+      "tag": "Patient First Primary and Urgent Care - Delran",
+      "location": [
+        40.0112568,
+        -74.9610336
+      ],
+      "Address": "4000 US-130, Delran"
+    },
+    {
+      "tag": "AFC Urgent Care Narberth",
+      "location": [
+        40.0115916,
+        -75.26147399999999
+      ],
+      "Address": "934 Montgomery Ave, Narberth"
+    },
+    {
+      "tag": "AFC Urgent Care Torresdale",
+      "location": [
+        40.06496569999999,
+        -74.9828167
+      ],
+      "Address": "9998 Frankford Ave, Philadelphia"
+    },
+    {
+      "tag": "vybe urgent care",
+      "location": [
+        39.9505972,
+        -75.1516018
+      ],
+      "Address": "618 Market St, Philadelphia"
+    },
+    {
+      "tag": "Medical Center of Bustleton",
+      "location": [
+        40.0878155,
+        -75.03566219999999
+      ],
+      "Address": "9622 Bustleton Ave # 5, Philadelphia"
+    },
+    {
+      "tag": "AFC Urgent Care Havertown",
+      "location": [
+        39.9852947,
+        -75.3141593
+      ],
+      "Address": "115 W Eagle Rd, Havertown"
+    },
+    {
+      "tag": "myDoc Urgent Care",
+      "location": [
+        39.9554821,
+        -75.19749540000001
+      ],
+      "Address": "3717 Chestnut St Ste 202, Philadelphia"
+    }
+  ]
+}
