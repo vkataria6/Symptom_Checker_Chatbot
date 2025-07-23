@@ -145,9 +145,8 @@
         </div>
     </div>
 </div>
-    <script></script> type= "text/javascript">
-    const SCRIPT_ROOT = {{ 'request.script_root|tojson' }} ;
-
+    <script type=""text/javascript>
+        window.$SCRIPT_ROOT = {{ request.script_root|tojson }} ;
     </script>
     <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
 <br><br><br>
