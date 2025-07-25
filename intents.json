@@ -20,7 +20,7 @@
                 "See you later",
                 "Goodbye"
             ],
-            "responses": "See you later, thanks for visiting <br>Have a nice day"
+            "responses": "See you later, thanks for visiting"
             
         },
 
@@ -53,20 +53,12 @@
             ],
             "responses": "Happy to help! Any time you need ! "
         },
-        {
-            "tag": "joke",
-            "patterns": [
-                "Tell me a joke",
-                "Give me a joke",
-                "Share a joke"
-            ],
-            "responses": "Why did the doctor carry a red pen? In case they needed to draw blood!"
-        },
+       
         {
             "tag": "Common Cold",
             "patterns": [
                 "cold, cough, tiredness, body pain",
-                "cold, cough, tiredness"
+                "cold, cough, runny nose"
             ],
             "responses": "You have may Common Cold. This is a viral infection affecting the upper respiratory system.<br>Recommended actions:<br>1. Get plenty of rest and stay hydrated.<br>2. Take over-the-counter cold medications.<br>3. Use a humidifier for congestion.<br>4. If symptoms worsen, consult a doctor.",
             "Precaution": "To avoid common cold:<br>1. Wash your hands frequently.<br>2. Avoid close contact with infected individuals.<br>3. Cover your mouth and nose when sneezing or coughing.<br>4. Boost your immune system through a healthy diet and regular exercise."
