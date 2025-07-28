@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
-from chat import get_response_info  
+from chat import get_response_info  # updated chat function
 
 app = Flask(__name__)
 CORS(app)
@@ -29,10 +29,15 @@ def about_us():
 @app.route("/get_response", methods=["POST"])
 def get_response():
     text = request.get_json().get("message")
+    
     role, response, extra = get_response_info(text)
 
-    # Return in the format expected by app.js
-    return jsonify([role, [response], extra])
+    # Fix: Prevent jsonify from failing if `extra` is None
+    return jsonify([
+        role,
+        [response],
+        extra if extra is not None else ""
+    ])
 
 
 if __name__ == "__main__":
