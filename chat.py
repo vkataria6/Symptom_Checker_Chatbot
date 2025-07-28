@@ -1,26 +1,27 @@
+import random
 import json
 import torch
-from model_chat import RNNModel
+
+import math
+import geocoder
+
+from model_chat import RNNModel  # Import the RNN model
 from nltk_utils import bag_of_words, tokenize
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-# Load data
 with open('intents.json', 'r') as json_data:
     intents = json.load(json_data)
 
-with open("tri_state_medical_centers.json", "r") as json_file:
-    tri_state_medical_centers = json.load(json_file)
-
-FILE = "data_rnn.pth"
+FILE = "data_rnn.pth" 
 data = torch.load(FILE)
 
 input_size = data["input_size"]
 hidden_size = data["hidden_size"]
 output_size = data["output_size"]
-num_layers = data["num_layers"]
-all_words = data["all_words"]
-tags = data["tags"]
+num_layers = data["num_layers"]  # Add the number of layers used in your RNN model
+all_words = data['all_words']
+tags = data['tags']
 model_state = data["model_state"]
 
 model = RNNModel(input_size, hidden_size, output_size, num_layers).to(device)
@@ -29,103 +30,123 @@ model.eval()
 
 bot_name = "Sam"
 
-# Conversation state memory
-user_context = {
-    "name": None,
-    "age": None,
-    "gender": None,
-    "symptom_tag": None,
-    "got_prognosis": False,
-    "county": None,
-    "state": None
-}
-
 def get_response(msg):
-    global user_context
-
     sentence = tokenize(msg)
+    if ("name" in sentence) or ("this is" in msg.lower()) :
+        for wor in sentence:
+            if (wor.lower() != "my") and (wor.lower() != "is") and (wor.lower() != "name") and (wor.lower() != "i") and (wor.lower() != "am") and (wor.lower() != "this"):
+                user_name = wor.capitalize()
+                res = "Hi " + user_name + " please say your age."
+                return ["name", res]
+    if ("age" in sentence) or ("I" in sentence and "am" in sentence) or ("I'm" in sentence):
+        for wor in sentence:
+            if wor.isnumeric():
+                user_age = wor
+                res = "What is your gender?"
+                return ["age", res]
+    if ("male" in sentence) or ("female" in sentence) or ("Male" in sentence) or ("Female" in sentence):
+        for wor in sentence:
+            if (wor.lower() == "male") or (wor.lower() == "female"):
+                user_gender = wor.lower()
+                res = "Tell the symptoms you have to know about potential conditions."
+                return ["gender", res]
+    if ("yes" in sentence) or (("medical" in sentence) and "center" in sentence) or ("hospital" in sentence) or ("hospitals" in sentence) :
+        li = centres()
+        return li
 
-    # Step 1: Get Name
-    if user_context["name"] is None:
-        for w in sentence:
-            if w.lower() not in {"my", "name", "is", "i", "am", "this", "hi", "hello"}:
-                user_context["name"] = w.capitalize()
-                return ["name", f"Hi {user_context['name']}, how old are you?"]
+    X = bag_of_words(sentence, all_words)
+    X = torch.tensor(X).unsqueeze(0).to(device)
 
-    # Step 2: Get Age
-    if user_context["age"] is None:
-        for w in sentence:
-            if w.isnumeric():
-                user_context["age"] = int(w)
-                return ["age", "What is your gender (male/female)?"]
+    output = model(X)
+    _, predicted = torch.max(output, dim=1)
 
-    # Step 3: Get Gender
-    if user_context["gender"] is None:
-        for w in sentence:
-            if w.lower() in {"male", "female"}:
-                user_context["gender"] = w.lower()
-                return ["gender", "Tell me the symptoms you are experiencing."]
+    #topk_values, topk_indices = torch.topk(output, k=3, dim=1)
 
-    # Step 4: Detect symptom tag using model
-    if not user_context["got_prognosis"]:
-        X = bag_of_words(sentence, all_words)
-        X = torch.tensor(X).unsqueeze(0).to(device)
-        output = model(X)
-        _, predicted = torch.max(output, dim=1)
-        tag = tags[predicted.item()]
-        probs = torch.softmax(output, dim=1)
-        prob = probs[0][predicted.item()]
+    tag = tags[predicted.item()]
+    #tag = [tags[i] for i in topk_indices[0]]
 
-        if prob.item() > 0.75:
-            for intent in intents["intents"]:
-                if intent["tag"] == tag:
-                    user_context["symptom_tag"] = tag
-                    user_context["got_prognosis"] = True
-                    response = intent["responses"][0]
-                    precaution = intent.get("Precaution", "")
-                    return [tag, response, precaution]
-        else:
-            return ["low_confidence", "I'm not sure what you mean. Could you rephrase the symptoms?"]
+    probs = torch.softmax(output, dim=1)
+    prob = probs[0][predicted.item()]
 
-    # Step 5: Ask for county and state
-    if user_context["county"] is None or user_context["state"] is None:
-        for w in sentence:
-            w = w.replace(",", "")
-        tokens = sentence
-        for i in range(len(tokens) - 1):
-            if tokens[i].lower().endswith("county"):
-                user_context["county"] = tokens[i].title()
-                user_context["state"] = tokens[i + 1].title()
-                break
+    """
+    if prob.item() > 0.5:
+        l = []
+        for intent in intents['intents']:
+            for a in tag:
+                if intent["tag"] == a:
+                    l.append([intent['tag'], intent['responses']])
+        return l
+    """
+    
+    if prob.item() > 0.75:
+        for intent in intents['intents']:
+            if intent["tag"] == tag:
+                if tag in ["greeting", "goodbye","work","who","Thanks","joke", "name", "age", "gender"]:
+                    return [intent['tag'], intent['responses']]
+                return [intent['tag'], intent['responses'], intent['Precaution']]
 
-        if user_context["county"] and user_context["state"]:
-            # Match county and state
-            county = user_context["county"]
-            state = user_context["state"]
-            key = f"{county}, {state}"
+    return ["not_understand","I do not understand. Can you please rephrase the sentence?"]
 
-            if key in tri_state_medical_centers:
-                centers = tri_state_medical_centers[key]
-                if centers:
-                    response = f"Here are some nearby medical centers in {key}:\n"
-                    for center in centers[:3]:
-                        response += f"• {center['name']} ({center['address']})\n"
-                    return ["centers", response]
-                else:
-                    return ["no_centers", f"Sorry, we couldn't find medical centers in {key}."]
-            else:
-                return ["no_match", "Could you recheck the county and state name?"]
-        else:
-            return ["ask_location", "Please provide the county and state you reside in (e.g., 'Queens County, NY')."]
+def centres():
+    # Function to calculate the Haversine distance between two points
+    def haversine(lat1, lon1, lat2, lon2):
+        # Radius of the Earth in kilometers
+        R = 6371.0
 
-    return ["done", "Thank you for using the symptom checker!"]
+        # Convert latitude and longitude from degrees to radians
+        lat1 = math.radians(lat1)
+        lon1 = math.radians(lon1)
+        lat2 = math.radians(lat2)
+        lon2 = math.radians(lon2)
 
-# For terminal testing
+        # Haversine formula
+        dlon = lon2 - lon1
+        dlat = lat2 - lat1
+
+        a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
+        c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+        # Calculate the distance
+        distance = R * c
+        return distance
+
+    # Get your current location based on your IP address
+    location = geocoder.ip('me')
+
+    # Given location (latitude and longitude)
+    given_location = location.latlng  # Replace with your desired location
+
+    # Load the JSON data
+    with open("tri_state_medical_centers.json", "r") as json_file:
+        medical_centers = json.load(json_file)
+
+    # Calculate distances to all medical centers
+    distances_to_centers = []
+
+    for center in medical_centers["intents"]:
+        center_location = center["location"]
+        distance = haversine(given_location[0], given_location[1], center_location[0], center_location[1])
+        distances_to_centers.append((center["tag"], distance))
+
+    # Sort the list of distances in ascending order
+    distances_to_centers.sort(key=lambda x: x[1])
+
+    l = ["center"]
+
+
+    for i, (center_name, distance) in enumerate(distances_to_centers[:5], start=1):
+        for center in medical_centers["intents"]:
+            if center["tag"] == center_name:
+                l.append([center_name, (str(round(distance, 2))+'km'), center["Address"]])
+    return l
+
+
 if __name__ == "__main__":
-    print("Bot is running. Type 'quit' to exit.")
+    print("Let's chat! (type 'quit' to exit)")
     while True:
-        text = input("You: ")
-        if text.lower() == "quit":
+        sentence = input("You: ")
+        if sentence == "quit":
             break
-        response = get_response(text)
-        print("Bot:", response)
+
+        resp = get_response(sentence)
+        print("Bot:", resp)
