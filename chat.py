@@ -24,13 +24,14 @@ model = RNNModel(input_size, hidden_size, output_size, num_layers).to(device)
 model.load_state_dict(model_state)
 model.eval()
 
+# --- Conversation State ---
 user_state = {"name": None, "got_symptoms": False, "asked_location": False}
 
 def get_response(msg):
     global user_state
     sentence = tokenize(msg)
 
-    # Detect and save name
+    # Ask for and store user's name
     if user_state["name"] is None:
         if ("name" in sentence) or ("this is" in msg.lower()):
             for wor in sentence:
@@ -43,7 +44,7 @@ def get_response(msg):
         else:
             return ["not_understand", "Can you please tell me your name first?"]
 
-    # Handle city input for medical center search
+    # Handle follow-up city input for medical centers
     if user_state.get("asked_location"):
         user_state["asked_location"] = False
         return centres(msg)
@@ -52,7 +53,7 @@ def get_response(msg):
         user_state["asked_location"] = True
         return centres()
 
-    # Use RNN to predict diagnosis
+    # Use RNN model to predict condition
     X = bag_of_words(sentence, all_words)
     X = torch.tensor(X).unsqueeze(0).to(device)
     output = model(X)
@@ -66,7 +67,7 @@ def get_response(msg):
             if intent["tag"] == tag:
                 response = intent["responses"]
                 precaution = intent.get("Precaution", "No precautions listed.")
-                return [tag, response, precaution, "Do you want to know any medical centers nearby? If yes, please provide your address."]
+                return [tag, response, precaution, "Do you want to know any medical centers nearby? If yes, please provide the city closest to you."]
     else:
         return ["not_understand", "I'm sorry, I couldn't determine a condition from those symptoms. Could you rephrase or list them again?"]
 
