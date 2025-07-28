@@ -85,7 +85,6 @@ class Chatbox {
         this.messages.slice().reverse().forEach(function(item) {
             if (item.name === "Sam") {
                 if (item.message1 && !Array.isArray(item.message1)) {
-                    // Bot with structured answers
                     if (specificTags.includes(item.message1)) {
                         html += '<div class="messages__item messages__item--operator">' + item.message2 + '</div>';
                     } else if (item.message1 === "center") {
