@@ -2,7 +2,7 @@ class Chatbox {
   constructor() {
     this.args = {
       openButton: document.querySelector('.chatbox__button'),
-      chatBox:   document.querySelector('.chatbox__support'),
+      chatBox: document.querySelector('.chatbox__support'),
       sendButton: document.querySelector('.chatbox__send--footer')
     };
     this.state = false;
@@ -34,12 +34,12 @@ class Chatbox {
     const userText = textField.value.trim();
     if (!userText) return;
 
-    // 1) push user message
+    // User input: display as operator (blue bubble)
     this.messages.push({ name: 'User', message: userText });
     this.updateChatText(chatbox);
     textField.value = '';
 
-    // 2) call backend
+    // Backend call
     fetch(`${window.SCRIPT_ROOT}/get_response`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -47,31 +47,29 @@ class Chatbox {
     })
     .then(res => res.json())
     .then(([ tag, responses, precautionOrCenters ]) => {
-      // tag: intent tag
-      // responses: array of response strings
-      // precautionOrCenters: may be string or array (centers list)
-      // push bot message(s)
-      this.messages.push({ name: 'Sam', message: responses[0] });
+      // Bot response: display as visitor (gray bubble)
+      this.messages.push({ name: 'Bot', message: responses[0] });
       if (precautionOrCenters) {
-        this.messages.push({ name: 'Sam', message: precautionOrCenters });
+        this.messages.push({ name: 'Bot', message: precautionOrCenters });
       }
       this.updateChatText(chatbox);
     })
     .catch(err => {
       console.error(err);
-      this.messages.push({ name: 'Sam', message: "Sorry, something went wrong." });
+      this.messages.push({ name: 'Bot', message: "Sorry, something went wrong." });
       this.updateChatText(chatbox);
     });
   }
 
   updateChatText(chatbox) {
     const container = chatbox.querySelector('.chatbox__messages > div');
-    container.innerHTML = ''; // clear
+    container.innerHTML = ''; // clear messages
 
-    // render each message
     this.messages.forEach(item => {
       const msgEl = document.createElement('div');
-      const whoClass = item.name === 'Sam'
+
+      // Visitor (gray) = Bot | Operator (blue) = User
+      const whoClass = item.name === 'User'
         ? 'messages__item--operator'
         : 'messages__item--visitor';
 
@@ -80,18 +78,19 @@ class Chatbox {
       container.appendChild(msgEl);
     });
 
-    // scroll to bottom
+    // Scroll to latest message
     container.scrollTop = container.scrollHeight;
   }
 }
 
-// init
+// Init
 const chatbox = new Chatbox();
 chatbox.display();
 
-// kick off first prompt:
+// Kick off with bot prompt (gray bubble)
 chatbox.messages.push({
-  name: 'Sam',
-  message: 'Hi, this is a medical chatbot. What is your age and gender?'
+  name: 'Bot',
+  message: 'Hi, I am a medical chatbot. What is your age and gender?'
 });
 chatbox.updateChatText(chatbox.args.chatBox);
+

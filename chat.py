@@ -1,105 +1,128 @@
 import json
 import torch
 
-from model_chat import RNNModel  # Import the RNN model
+from model_chat import RNNModel
 from nltk_utils import bag_of_words, tokenize
 
 # Device setup
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-# Load JSON intents
+# Load intents
 with open('intents.json', 'r') as json_data:
     intents = json.load(json_data)
 
-# Load JSON tri state medical centers
-with open("tri_state_medical_centers.json", "r") as json_file:
-    tri_state_medical_centers = json.load(json_file)
+# Load medical centers
+with open("tri_state_medical_centers.json", "r") as f:
+    tri_state_medical_centers = json.load(f)
 
-def centres():
-    return tri_state_medical_centers
-
-# Load trained model data
+# Model setup
 FILE = "data_rnn.pth"
 data = torch.load(FILE)
 
 input_size = data["input_size"]
 hidden_size = data["hidden_size"]
 output_size = data["output_size"]
-num_layers = data["num_layers"]  # Number of RNN layers
+num_layers = data["num_layers"]
 all_words = data["all_words"]
 tags = data["tags"]
 model_state = data["model_state"]
 
-# Initialize and load the model
 model = RNNModel(input_size, hidden_size, output_size, num_layers).to(device)
 model.load_state_dict(model_state)
 model.eval()
 
+# Bot info
 bot_name = "Sam"
 
-def get_response(msg):
+# Internal conversation state (simplified for single user session)
+conversation_state = {
+    "stage": "ask_age_gender",
+    "age": None,
+    "gender": None,
+    "symptoms": None
+}
+
+def get_response_info(msg):
+    global conversation_state
+
     sentence = tokenize(msg)
-    # Name extraction
-    if ("name" in sentence) or ("this is" in msg.lower()):
-        for wor in sentence:
-            if wor.lower() not in {"my", "is", "name", "i", "am", "this"}:
-                user_name = wor.capitalize()
-                res = f"Hi {user_name}, please say your age."
-                return ["name", res]
+    stage = conversation_state["stage"]
 
-    # Age extraction
-    if ("age" in sentence) or ("I" in sentence and "am" in sentence) or ("I'm" in sentence):
-        for wor in sentence:
-            if wor.isnumeric():
-                user_age = wor
-                res = "What is your gender?"
-                return ["age", res]
+    # Stage 1: Collect age & gender
+    if stage == "ask_age_gender":
+        age = None
+        gender = None
+        for word in sentence:
+            if word.isnumeric():
+                age = word
+            if word.lower() in ["male", "female"]:
+                gender = word.lower()
 
-    # Gender extraction
-    if any(w.lower() in {"male", "female"} for w in sentence):
-        for wor in sentence:
-            if wor.lower() in {"male", "female"}:
-                user_gender = wor.lower()
-                res = "Tell the symptoms you have to know about potential conditions."
-                return ["gender", res]
+        if age and gender:
+            conversation_state.update({"age": age, "gender": gender, "stage": "ask_symptoms"})
+            return "Bot", "Thank you. What symptoms are you experiencing?", None
+        else:
+            return "Bot", "Please enter both your age and gender.", None
 
-    # Medical center inquiry
-    if ("yes" in sentence) or (("medical" in sentence) and "center" in sentence) \
-       or ("hospital" in sentence) or ("hospitals" in sentence):
-        return centres()
+    # Stage 2: Collect symptoms and predict condition
+    elif stage == "ask_symptoms":
+        conversation_state["symptoms"] = msg
+        tag, description, precaution = classify_symptom(msg)
+        conversation_state["stage"] = "ask_zip"
+        diagnosis_text = f"Diagnosis: {tag}\n\nDescription: {description}"
+        return "Bot", diagnosis_text, precaution
 
-    # Fallback to RNN classification
+    # Stage 3: Collect zip and return nearby centers
+    elif stage == "ask_zip":
+        zip_code = msg.strip()
+        conversation_state["stage"] = "done"
+        centers = lookup_centers(zip_code)
+        return "Bot", f"Here are the 3 closest centers near {zip_code}:\n{centers}", None
+
+    # Final stage
+    else:
+        return "Bot", "Thank you for using the medical chatbot!", None
+
+
+def classify_symptom(msg):
+    sentence = tokenize(msg)
     X = bag_of_words(sentence, all_words)
     X = torch.tensor(X).unsqueeze(0).to(device)
 
     output = model(X)
     _, predicted = torch.max(output, dim=1)
     tag = tags[predicted.item()]
-
     probs = torch.softmax(output, dim=1)
     prob = probs[0][predicted.item()]
 
     if prob.item() > 0.75:
-        for intent in intents['intents']:
+        for intent in intents["intents"]:
             if intent["tag"] == tag:
-                # Simple tags without precautions
-                if tag in ["greeting", "goodbye", "work", "who", "Thanks", "joke", "name", "age", "gender"]:
-                    return [intent['tag'], intent['responses']]
-                # Tags with precautions
-                return [intent['tag'], intent['responses'], intent['Precaution']]
+                desc = intent.get("responses", [""])[0]
+                precaution = intent.get("Precaution", "No preventative measures listed.")
+                return tag, desc, precaution
 
-    # If confidence is low
-    return ["not_understand", "I do not understand. Can you please rephrase the sentence?"]
+    return "Unknown", "I could not determine the condition. Please try rephrasing.", None
+
+
+def lookup_centers(zip_code):
+    if zip_code in tri_state_medical_centers:
+        centers = tri_state_medical_centers[zip_code][:3]
+        return "\n".join([f"- {c['name']} ({c['address']})" for c in centers])
+    return "Sorry, we couldn't find medical centers near your zip code."
+
 
 def main():
-    print("Let's chat! (type 'quit' to exit)")
+    print("Chatbot active. (type 'quit' to exit)")
     while True:
-        sentence = input("You: ")
-        if sentence.strip().lower() == "quit":
+        user_input = input("You: ")
+        if user_input.lower() == "quit":
             break
+        name, message, extra = get_response_info(user_input)
+        print(f"{bot_name}:", message)
+        if extra:
+            print(f"{bot_name}:", extra)
 
-        resp = get_response(sentence)
-        print("Bot:", resp)
 
 if __name__ == "__main__":
     main()
