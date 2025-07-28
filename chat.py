@@ -1,6 +1,7 @@
 import json
 import torch
 import traceback
+from difflib import get_close_matches
 
 from model_chat import RNNModel
 from nltk_utils import bag_of_words, tokenize
@@ -34,7 +35,7 @@ model.eval()
 
 bot_name = "Sam"
 
-# Simple state memory
+# In-memory conversation state
 conversation_state = {
     "stage": "ask_age_gender",
     "age": None,
@@ -42,12 +43,13 @@ conversation_state = {
     "symptoms": None
 }
 
+
 def get_response_info(msg):
     global conversation_state
     try:
         stage = conversation_state.get("stage", "ask_age_gender")
 
-        # === Stage 1: Ask for age and gender ===
+        # === Stage 1: Age & Gender ===
         if stage == "ask_age_gender":
             age = None
             gender = None
@@ -68,27 +70,26 @@ def get_response_info(msg):
                     "stage": "ask_symptoms"
                 })
                 return "Bot", "Thank you. What symptoms are you experiencing?", ""
-
             else:
                 return "Bot", "Please enter both your age and gender (e.g. 21, Female).", ""
 
-        # === Stage 2: Classify symptoms ===
+        # === Stage 2: Symptom Classification ===
         elif stage == "ask_symptoms":
             conversation_state["symptoms"] = msg
             tag, description, precaution = classify_symptom(msg)
-            conversation_state["stage"] = "ask_zip"
+            conversation_state["stage"] = "ask_location"
 
             diagnosis_text = f"Diagnosis: {tag}\n\nDescription: {description}"
-            return "Bot", diagnosis_text, precaution or ""
+            return "Bot", "Thanks. Please provide the county and state you reside in (e.g., Kings County, New York).", f"{diagnosis_text}\n\nPrecaution: {precaution}"
 
-        # === Stage 3: ZIP code lookup ===
-        elif stage == "ask_zip":
-            zip_code = msg.strip()
+        # === Stage 3: Location Matching ===
+        elif stage == "ask_location":
+            location = msg.strip()
             conversation_state["stage"] = "done"
-            centers = lookup_centers(zip_code)
-            return "Bot", f"Here are the 3 closest centers near {zip_code}:\n{centers}", ""
+            centers = lookup_centers_by_location(location)
+            return "Bot", f"Here are the 3 closest medical centers near your area:\n{centers}", ""
 
-        # === End of session ===
+        # === Final ===
         else:
             return "Bot", "Thank you for using the medical chatbot!", ""
 
@@ -118,11 +119,30 @@ def classify_symptom(msg):
     return "Unknown", "I could not determine the condition. Please try rephrasing.", ""
 
 
-def lookup_centers(zip_code):
-    if zip_code in tri_state_medical_centers:
-        centers = tri_state_medical_centers[zip_code][:3]
-        return "\n".join([f"- {c['name']} ({c['address']})" for c in centers])
-    return "Sorry, we couldn't find medical centers near your zip code."
+def lookup_centers_by_location(user_input):
+    user_input = user_input.lower().strip()
+    all_texts = []
+
+    text_to_center = {}
+
+    for entry in tri_state_medical_centers:
+        address = entry.get("Address", "").lower()
+        tag = entry.get("tag", "").lower()
+        combined = f"{tag} {address}"
+        all_texts.append(combined)
+        text_to_center[combined] = entry
+
+    matches = get_close_matches(user_input, all_texts, n=3, cutoff=0.3)
+
+    if not matches:
+        return "Sorry, we couldn't find any medical centers near that location."
+
+    results = []
+    for match in matches:
+        center = text_to_center[match]
+        results.append(f"- {center['tag']} ({center['Address']})")
+
+    return "\n".join(results)
 
 
 def main():
