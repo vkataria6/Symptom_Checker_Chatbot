@@ -24,7 +24,6 @@ model = RNNModel(input_size, hidden_size, output_size, num_layers).to(device)
 model.load_state_dict(model_state)
 model.eval()
 
-# --- Conversation State ---
 user_state = {"name": None, "got_symptoms": False, "asked_location": False}
 
 def get_response(msg):
@@ -44,7 +43,7 @@ def get_response(msg):
         else:
             return ["not_understand", "Can you please tell me your name first?"]
 
-    # Handle follow-up city input for medical centers
+    # Handle city input for medical center search
     if user_state.get("asked_location"):
         user_state["asked_location"] = False
         return centres(msg)
