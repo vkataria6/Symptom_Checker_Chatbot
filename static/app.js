@@ -13,7 +13,6 @@ class Chatbox {
     const { openButton, chatBox, sendButton } = this.args;
 
     openButton.addEventListener('click', () => this.toggleState(chatBox));
-
     sendButton.addEventListener('click', () => this.onSendButton(chatBox));
 
     const inputNode = chatBox.querySelector('input');
@@ -22,6 +21,13 @@ class Chatbox {
         this.onSendButton(chatBox);
       }
     });
+
+    // Kick off first bot prompt
+    this.messages.push({
+      name: 'Sam',
+      message: 'Hi, I am a medical chatbot. What is your age and gender?'
+    });
+    this.updateChatText(chatBox);
   }
 
   toggleState(chatbox) {
@@ -34,63 +40,57 @@ class Chatbox {
     const userText = textField.value.trim();
     if (!userText) return;
 
-    // User input: display as operator (blue bubble)
+    // Push user message
     this.messages.push({ name: 'User', message: userText });
     this.updateChatText(chatbox);
     textField.value = '';
 
-    // Backend call
+    // Send to Flask
     fetch(`${window.SCRIPT_ROOT}/get_response`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: userText })
     })
-    .then(res => res.json())
-    .then(([ tag, responses, precautionOrCenters ]) => {
-      // Bot response: display as visitor (gray bubble)
-      this.messages.push({ name: 'Bot', message: responses[0] });
-      if (precautionOrCenters) {
-        this.messages.push({ name: 'Bot', message: precautionOrCenters });
-      }
-      this.updateChatText(chatbox);
-    })
-    .catch(err => {
-      console.error(err);
-      this.messages.push({ name: 'Bot', message: "Sorry, something went wrong." });
-      this.updateChatText(chatbox);
-    });
+      .then(res => res.json())
+      .then(([tag, responses, extra]) => {
+        // Push chatbot response(s)
+        if (responses && responses.length > 0) {
+          this.messages.push({ name: 'Sam', message: responses[0] });
+        }
+        if (extra && extra !== "") {
+          this.messages.push({ name: 'Sam', message: extra });
+        }
+        this.updateChatText(chatbox);
+      })
+      .catch(err => {
+        console.error("Fetch error:", err);
+        this.messages.push({
+          name: 'Sam',
+          message: 'Sorry, something went wrong.'
+        });
+        this.updateChatText(chatbox);
+      });
   }
 
   updateChatText(chatbox) {
     const container = chatbox.querySelector('.chatbox__messages > div');
-    container.innerHTML = ''; // clear messages
+    container.innerHTML = ''; // Clear
 
     this.messages.forEach(item => {
       const msgEl = document.createElement('div');
-
-      // Visitor (gray) = Bot | Operator (blue) = User
-      const whoClass = item.name === 'User'
-        ? 'messages__item--operator'
-        : 'messages__item--visitor';
-
+      const whoClass = item.name === 'Sam'
+        ? 'messages__item--operator'   // bot in gray
+        : 'messages__item--visitor';   // user in blue
       msgEl.classList.add('messages__item', whoClass);
       msgEl.textContent = item.message;
       container.appendChild(msgEl);
     });
 
-    // Scroll to latest message
     container.scrollTop = container.scrollHeight;
   }
 }
 
-// Init
 const chatbox = new Chatbox();
 chatbox.display();
 
-// Kick off with bot prompt (gray bubble)
-chatbox.messages.push({
-  name: 'Bot',
-  message: 'Hi, I am a medical chatbot. What is your age and gender?'
-});
-chatbox.updateChatText(chatbox.args.chatBox);
 
