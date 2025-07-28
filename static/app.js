@@ -13,27 +13,26 @@ class Chatbox {
     display() {
         const {openButton, chatBox, sendButton} = this.args;
 
-        openButton.addEventListener('click', () => this.toggleState(chatBox))
-        sendButton.addEventListener('click', () => this.onSendButton(chatBox))
+        openButton.addEventListener('click', () => this.toggleState(chatBox));
+        sendButton.addEventListener('click', () => this.onSendButton(chatBox));
 
         const node = chatBox.querySelector('input');
         node.addEventListener("keyup", ({key}) => {
             if (key === "Enter") {
-                this.onSendButton(chatBox)
+                this.onSendButton(chatBox);
             }
-        })
+        });
     }
 
     toggleState(chatbox) {
         this.state = !this.state;
 
-        if(this.state) {
+        if (this.state) {
             chatbox.classList.add('chatbox--active');
 
-            // Show greeting only once
             if (this.messages.length === 0) {
-                this.messages.push({ name: "User", message: "Hi, this is a medical chat support." });
-                this.messages.push({ name: "User", message: "May I know your name?" });
+                this.messages.push({ name: "Sam", message: "Hi, this is a medical chat support." });
+                this.messages.push({ name: "Sam", message: "May I know your name?" });
                 this.updateChatText(chatbox);
             }
         } else {
@@ -48,12 +47,12 @@ class Chatbox {
             return;
         }
 
-        let msg1 = { name: "User", message: text1 }
+        let msg1 = { name: "User", message: text1 };
         this.messages.push(msg1);
 
         fetch('http://127.0.0.1:5000/predict', {
             method: 'POST',
-            body: JSON.stringify({ message: text1}),
+            body: JSON.stringify({ message: text1 }),
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
@@ -82,51 +81,57 @@ class Chatbox {
     updateChatText(chatbox) {
         var html = '';
         const specificTags = ["greeting", "goodbye", "work", "who", "Thanks", "joke", "name", "age", "gender", "not_understand"];
+
         this.messages.slice().reverse().forEach(function(item) {
             if (item.name === "Sam") {
-                if (specificTags.includes(item.message1)) {
-                    html += '<div class="messages__item messages__item--visitor">' + item.message2 + '</div>';
-                } else if (item.message1 === "center") {
-                    html += '<div class="messages__item messages__item--visitor">You can ask me if you want anything else.</div>'
-                          + '<div class="myDIV" style="font-size: 17px;">' + item.message4[0] + ', ' + item.message4[1] + '</div>'
-                          + '<div class="hide">' + item.message4[2] + '</div>'
-                          + '<div class="myDIV" style="font-size: 17px;">' + item.message3[0] + ', ' + item.message3[1] + '</div>'
-                          + '<div class="hide">' + item.message3[2] + '</div>'
-                          + '<div class="myDIV" style="font-size: 17px;">' + item.message2[0] + ', ' + item.message2[1] + '</div>'
-                          + '<div class="hide">' + item.message2[2] + '</div>'
-                          + '<div class="con" style="margin-top:20px; margin-bottom:10px"><h3>Medical location that are near to you are.</h3></div>';
+                if (item.message1 && !Array.isArray(item.message1)) {
+                    // Bot with structured answers
+                    if (specificTags.includes(item.message1)) {
+                        html += '<div class="messages__item messages__item--operator">' + item.message2 + '</div>';
+                    } else if (item.message1 === "center") {
+                        html += '<div class="messages__item messages__item--operator">You can ask me if you want anything else.</div>'
+                              + '<div class="myDIV" style="font-size: 17px;">' + item.message4[0] + ', ' + item.message4[1] + '</div>'
+                              + '<div class="hide">' + item.message4[2] + '</div>'
+                              + '<div class="myDIV" style="font-size: 17px;">' + item.message3[0] + ', ' + item.message3[1] + '</div>'
+                              + '<div class="hide">' + item.message3[2] + '</div>'
+                              + '<div class="myDIV" style="font-size: 17px;">' + item.message2[0] + ', ' + item.message2[1] + '</div>'
+                              + '<div class="hide">' + item.message2[2] + '</div>'
+                              + '<div class="con" style="margin-top:20px; margin-bottom:10px"><h3>Medical location that are near to you are.</h3></div>';
+                    } else {
+                        html += '<div class="messages__item messages__item--operator">Do you want to know about the nearby medical center locations</div>'
+                              + '<div class="accordion" id="accordionExample">'
+                              + '<div class="accordion-item" style="width: 40%; margin-top: 10px" >'
+                              + '<h2 class="accordion-header" id="headingOne">'
+                              + '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">'
+                              + '<b>Precautions</b>'
+                              + '</button>'
+                              + '</h2>'
+                              + '<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">'
+                              + '<div class="accordion-body">' + item.message3 + '</div>'
+                              + '</div>'
+                              + '</div>'
+                              + '</div>'
+                              + '<div class="accordion" id="accordionExample">'
+                              + '<div class="accordion-item" style="width: 40%; margin-top: 10px" >'
+                              + '<h2 class="accordion-header" id="headingThree">'
+                              + '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">'
+                              + '<b>Description</b>'
+                              + '</button>'
+                              + '</h2>'
+                              + '<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">'
+                              + '<div class="accordion-body">' + item.message2 + '</div>'
+                              + '</div>'
+                              + '</div>'
+                              + '</div>'
+                              + '<div class="messages__item messages__item--operator">Here is some more info on the disease</div>'
+                              + '<div class="myDIV">' + item.message1 + '</div>'
+                              + '<div class="con" style="margin-top:20px; margin-bottom:10px"><h3>This may be the possible disease that you may have.</h3></div>';
+                    }
                 } else {
-                    html += '<div class="messages__item messages__item--visitor">Do you want to know about the nearby medical center locations</div>'
-                          + '<div class="accordion" id="accordionExample">'
-                          + '<div class="accordion-item" style="width: 40%; margin-top: 10px" >'
-                          + '<h2 class="accordion-header" id="headingOne">'
-                          + '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">'
-                          + '<b>Precautions</b>'
-                          + '</button>'
-                          + '</h2>'
-                          + '<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">'
-                          + '<div class="accordion-body">' + item.message3 + '</div>'
-                          + '</div>'
-                          + '</div>'
-                          + '</div>'
-                          + '<div class="accordion" id="accordionExample">'
-                          + '<div class="accordion-item" style="width: 40%; margin-top: 10px" >'
-                          + '<h2 class="accordion-header" id="headingThree">'
-                          + '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">'
-                          + '<b>Description</b>'
-                          + '</button>'
-                          + '</h2>'
-                          + '<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">'
-                          + '<div class="accordion-body">' + item.message2 + '</div>'
-                          + '</div>'
-                          + '</div>'
-                          + '</div>'
-                          + '<div class="messages__item messages__item--visitor">Here is some more info on the disease</div>'
-                          + '<div class="myDIV">' + item.message1 + '</div>'
-                          + '<div class="con" style="margin-top:20px; margin-bottom:10px"><h3>This may be the possible disease that you may have.</h3></div>';
+                    html += '<div class="messages__item messages__item--operator">' + item.message + '</div>';
                 }
             } else {
-                html += '<div class="messages__item messages__item--operator">' + item.message + '</div>';
+                html += '<div class="messages__item messages__item--visitor">' + item.message + '</div>';
             }
         });
 
