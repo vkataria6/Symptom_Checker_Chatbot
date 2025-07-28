@@ -1,9 +1,6 @@
 import random
 import json
 import torch
-import math
-import geocoder
-
 from model_chat import RNNModel
 from nltk_utils import bag_of_words, tokenize
 
@@ -27,8 +24,6 @@ model = RNNModel(input_size, hidden_size, output_size, num_layers).to(device)
 model.load_state_dict(model_state)
 model.eval()
 
-bot_name = "Sam"
-
 user_state = {"name": None, "got_symptoms": False, "asked_location": False}
 
 def get_response(msg):
@@ -48,7 +43,16 @@ def get_response(msg):
         else:
             return ["not_understand", "Can you please tell me your name first?"]
 
-    # Predict condition using RNN model
+    # Handle city input for medical center search
+    if user_state.get("asked_location"):
+        user_state["asked_location"] = False
+        return centres(msg)
+
+    if "yes" in sentence and "medical" in msg.lower():
+        user_state["asked_location"] = True
+        return centres()
+
+    # Use RNN to predict diagnosis
     X = bag_of_words(sentence, all_words)
     X = torch.tensor(X).unsqueeze(0).to(device)
     output = model(X)
@@ -62,38 +66,27 @@ def get_response(msg):
             if intent["tag"] == tag:
                 response = intent["responses"]
                 precaution = intent.get("Precaution", "No precautions listed.")
-                return [tag, response, precaution, "Do you want to know any medical centers nearby? If yes, please provide the county and state you reside in."]
+                return [tag, response, precaution, "Do you want to know any medical centers nearby? If yes, please provide your address."]
     else:
         return ["not_understand", "I'm sorry, I couldn't determine a condition from those symptoms. Could you rephrase or list them again?"]
 
-    # Handle location input if user was asked
-    if user_state.get("asked_location"):
-        user_state["asked_location"] = False
-        return centres(msg)
-
-    if "yes" in sentence and "medical" in msg.lower():
-        user_state["asked_location"] = True
-        return centres()
-
-    return ["not_understand", "Can you please tell me your name first?"]
-
-def centres(location_input=None):
+def centres(city_input=None):
     with open("tri_state_medical_centers.json", "r") as json_file:
         medical_centers = json.load(json_file)
 
-    if not location_input:
-        return ["ask_location", "Do you want to know any medical centers nearby? If yes, please provide the county and state you reside in."]
+    if not city_input:
+        return ["ask_location", "Where is the closest city near you?"]
 
-    location_input = location_input.lower()
+    city_input = city_input.lower().strip()
     matches = []
 
     for center in medical_centers["intents"]:
         address = center.get("Address", "").lower()
-        if all(part.strip() in address for part in location_input.split(",")):
+        if city_input in address:
             matches.append(center)
 
     if not matches:
-        return ["no_results", f"Sorry, we couldn't find medical centers in {location_input.title()}."]
+        return ["no_results", f"Sorry, we couldn't find medical centers near {city_input.title()}."]
     
     top_centers = matches[:3]
     response = ["center_results"]
@@ -110,4 +103,3 @@ if __name__ == "__main__":
 
         resp = get_response(sentence)
         print("Bot:", resp)
-
