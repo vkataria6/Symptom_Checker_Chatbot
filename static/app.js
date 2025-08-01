@@ -53,7 +53,13 @@ class Chatbox {
         })
         .then(r => r.json())
         .then(r => {
-            let msg2 = {name: "Sam", message1: r.answer[0], message2: r.answer[1], message3: r.answer[2], message4: r.answer[3]}
+            let msg2 = {
+                name: "Sam",
+                message1: r.answer[0],
+                message2: r.answer[1],
+                message3: r.answer[2],
+                message4: r.answer[3]
+            };
             this.messages.push(msg2);
             this.updateChatText(chatbox)
             textField.value = ''
@@ -76,12 +82,12 @@ class Chatbox {
                 }
 
                 else if (item.message1 === "center_results") {
-                    html += '<div class="con" style="margin-top:20px; margin-bottom:10px"><h3>Medical centers near you:</h3></div>';
                     for (let i = 0; i < item.message2.length; i++) {
                         html += '<div class="myDIV" style="font-size: 17px;">' + item.message2[i][0] + '</div>';
                         html += '<div class="hide">' + item.message2[i][1] + '</div>';
                     }
-                    html += '<div class="messages__item messages__item--visitor">You can ask me anything else.</div>';
+                    html += '<div class="messages__item messages__item--visitor"><strong>Medical centers near you:</strong></div>';
+                    
                 }
 
                 else {

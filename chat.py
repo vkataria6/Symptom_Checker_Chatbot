@@ -68,39 +68,6 @@ def get_response(msg):
     else:
         return ["not_understand", "I'm sorry, I couldn't determine a condition from those symptoms. Could you rephrase or list them again?"]
 
-def centres():
-    def haversine(lat1, lon1, lat2, lon2):
-        R = 6371.0
-        lat1 = math.radians(lat1)
-        lon1 = math.radians(lon1)
-        lat2 = math.radians(lat2)
-        lon2 = math.radians(lon2)
-        dlon = lon2 - lon1
-        dlat = lat2 - lat1
-        a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
-        c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-        return R * c
-
-    location = geocoder.ip('me')
-    given_location = location.latlng
-
-    with open("tri_state_medical_centers.json", "r") as json_file:
-        medical_centers = json.load(json_file)
-
-    distances_to_centers = []
-    for center in medical_centers["intents"]:
-        center_location = center["location"]
-        distance = haversine(given_location[0], given_location[1], center_location[0], center_location[1])
-        distances_to_centers.append((center["tag"], distance))
-
-    distances_to_centers.sort(key=lambda x: x[1])
-
-    l = ["center"]
-    for i, (center_name, distance) in enumerate(distances_to_centers[:5], start=1):
-        for center in medical_centers["intents"]:
-            if center["tag"] == center_name:
-                l.append([center_name, f"{round(distance, 2)}km", center["Address"]])
-    return l
 
 if __name__ == "__main__":
     print("Let's chat! (type 'quit' to exit)")
